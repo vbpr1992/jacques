@@ -5,9 +5,7 @@ class NotesController < ApplicationController
 
   # GET /notes
   def index
-    @notes = current_user.notes
-
-    render json: @notes
+    render json: current_user, serializer: UserWithNotesSerializer
   end
 
   # GET /notes/1

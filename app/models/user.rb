@@ -17,6 +17,10 @@ class User < ApplicationRecord
   def following_count
   end
 
+  def timeline_tweets
+    Tweet.timeline(self)
+  end
+
   private
 
   def generate_auth_token
