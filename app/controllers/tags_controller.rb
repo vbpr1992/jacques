@@ -10,8 +10,7 @@ class TagsController < ApplicationController
 
   # GET /tags/1
   def show
-    render json: {tag: {name: @tag.name}}
-      .merge(ActiveModelSerializers::SerializableResource.new(@tag.notes).as_json)
+    render json: {tag: {name: @tag.name, notes: @tag.notes.map{|note| NoteSerializer.new(note)}.as_json}}
   end
 
   # POST /tags
