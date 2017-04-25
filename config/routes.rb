@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :notes
+  namespace :api, defaults: { format: 'json' } do
+    resources :notes do
+      collection do
+        get '/tag/:tag_name' => 'notes#for_tag'
+      end
+    end
+  end
 
-  post '/api/notes'
 end
