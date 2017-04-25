@@ -11,7 +11,6 @@ class ExplorerTest < ActionDispatch::IntegrationTest
     get '/api/notes.json'
     assert_equal 200, status
     json = JSON.parse(response.body)
-    ap json
     assert json['notes']
     assert_equal 10, json['notes'].length
   end
@@ -20,7 +19,7 @@ class ExplorerTest < ActionDispatch::IntegrationTest
     get '/api/notes.json'
     json = JSON.parse(response.body)
     assert json['notes'].first == example_note(Note.first),
-      json['notes'].first.inspect + "\n\n" + example_note(Note.first).inspect
+    json['notes'].first.inspect + "\n\n" + example_note(Note.first).inspect
   end
 
   def test_tag_lists_are_correct
