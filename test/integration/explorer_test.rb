@@ -27,7 +27,7 @@ class ExplorerTest < ActionDispatch::IntegrationTest
     get "/api/notes/tag/#{note.tags.first.name}"
     json = JSON.parse(response.body)
     assert_equal note.tags.first.name, json['tag']['name']
-    assert_equal example_note(Note.first), json['notes'].first
+      "Got: " + json['notes'].first.inspect + "\n\nExpected: " + example_note(Note.first).inspect
   end
 
   def test_tag_create_is_correct
